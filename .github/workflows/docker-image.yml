@@ -1,0 +1,22 @@
+name: Docker Build
+
+on:
+  push:
+    branches: [ main, staging ]
+  pull_request:
+    branches: [ main, staging ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Build Docker image
+      run: |
+        docker build -t github-workflow-exercise:latest .
+    
+    - name: Test Docker image
+      run: |
+        docker run --rm github-workflow-exercise:latest python -c "from app.app import dedupe_header; print('Docker test passed')"
