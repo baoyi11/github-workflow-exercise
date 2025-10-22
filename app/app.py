@@ -26,3 +26,20 @@ def dedupe_header(columns: List[str]) -> List[str]:
         seen_counts[col] += 1
 
     return result
+def add_numbers(a: int, b: int) -> int:
+    """
+    简单的加法功能
+    """
+    return a + b
+
+# 在文件末尾添加（用于测试Docker运行）
+if __name__ == "__main__":
+    # 测试dedupe功能
+    test_columns = ["id", "name", "id", "age", "name"]
+    result = dedupe_header(test_columns)
+    print(f"Original: {test_columns}")
+    print(f"Deduped: {result}")
+    
+    # 测试加法功能
+    sum_result = add_numbers(5, 3)
+    print(f"5 + 3 = {sum_result}")
